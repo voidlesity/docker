@@ -1,0 +1,41 @@
+services:
+  tuwunel:
+    image: ghcr.io/matrix-construct/tuwunel:latest
+    restart: unless-stopped
+    ports:
+      - "8008:8008"
+    volumes:
+      - /home/misc/tuwunel:/var/lib/tuwunel
+    env_file: ".env"
+  rtc-jwt:
+    image: ghcr.io/element-hq/lk-jwt-service:latest
+    restart: unless-stopped
+    env_file: "jwt.env"
+    network_mode: "host"
+  rtc-livekit:
+    image: livekit/livekit-server:v1.9.4
+    command: --config /etc/livekit.yaml
+    restart: unless-stopped
+    network_mode: "host"
+    volumes:
+      - ./livekit.yaml:/etc/livekit.yaml
+  sable:
+    image: ghcr.io/sableclient/sable:latest
+    restart: unless-stopped
+    ports:
+      - "8094:8080"
+  bridge-discord:
+    image: dock.mau.dev/mautrix/discord:latest
+    restart: unless-stopped
+    volumes:
+      - /home/misc/mautrix/discord:/data
+  bridge-signal:
+    image: dock.mau.dev/mautrix/signal:latest
+    restart: unless-stopped
+    volumes:
+      - /home/misc/mautrix/signal:/data
+  bridge-whatsapp:
+    image: dock.mau.dev/mautrix/whatsapp:latest
+    restart: unless-stopped
+    volumes:
+      - /home/misc/mautrix/whatsapp:/data
