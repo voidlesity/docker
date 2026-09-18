@@ -1,0 +1,51 @@
+services:
+  web:
+    image: ghcr.io/calagopus/panel:heavy-aio
+    restart: unless-stopped
+    env_file: ".env"
+    volumes:
+      # --- panel
+      - /home/misc/calagopus/data:/var/lib/calagopus
+      - /home/misc/calagopus/logs:/var/log/calagopus
+      
+      # --- heavy
+      - /home/misc/calagopus/build/binaries:/app/binaries
+      - /home/misc/calagopus/build/translations:/app/translations
+      - /home/misc/calagopus/build/extensions:/app/extensions
+      - /home/misc/calagopus/build/extension-migrations:/app/repo/database/extension-migrations
+
+      # --- wings
+      - /home/misc/calagopus/wings-config.yml:/wings-config.yml
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/containers/:/var/lib/docker/containers/
+      - /etc/calagopus-wings/:/etc/calagopus-wings/
+      - /var/lib/calagopus-wings/:/var/lib/calagopus-wings/
+      - /var/log/calagopus-wings/:/var/log/calagopus-wings/
+      - /tmp/calagopus-wings/:/tmp/calagopus-wings/
+    ports:
+      - 8000:8000
+      - 2022:2022
+    depends_on:
+      - db
+      - cache
+
+  db:
+    image: ghcr.io/calagopus/pgautoupgrade:18-alpine
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+      - POSTGRES_USER=panel
+      - POSTGRES_PASSWORD=panel
+      - POSTGRES_DB=panel
+      - PGDATA=/data
+    volumes:
+      - ./postgres:/data
+
+  cache:
+    image: ghcr.io/calagopus/valkey:latest
+    restart: unless-stopped
+    command: --protected-mode no --save 60 1
+    environment:
+      TZ: Europe/Berlin
+    volumes:
+      - ./cache:/data
