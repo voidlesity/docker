@@ -13,7 +13,7 @@ services:
     env_file: "jwt.env"
     network_mode: "host"
   rtc-livekit:
-    image: livekit/livekit-server:latest
+    image: livekit/livekit-server:v1.9.4
     command: --config /etc/livekit.yaml
     restart: unless-stopped
     network_mode: "host"
