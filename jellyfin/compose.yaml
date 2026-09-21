@@ -12,7 +12,16 @@ services:
     restart: unless-stopped
     labels:
       com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/jellyfin.svg
-    
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    restart: unless-stopped
+    ports:
+      - 9696:9696
+    volumes:
+      - /home/misc/jellyfin/prowlarr/config:/config
+      - /home/misc/jellyfin/prowlarr/downloads:/downloads
+    labels:
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/prowlarr.svg
   radarr:
     image: lscr.io/linuxserver/radarr:latest
     restart: unless-stopped
