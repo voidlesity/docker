@@ -7,9 +7,9 @@ services:
       - 7359:7359/udp
     volumes:
       - ./jellyfin/config:/config
+      - ./jellyfin/config/custom-cont-init.d:/custom-cont-init.d
       - ./jellyfin/cache:/cache
       - ./data/media:/media
-      - ./jellyfin/config/custom-cont-init.d:/custom-cont-init.d
     labels:
       com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/jellyfin.svg
 
