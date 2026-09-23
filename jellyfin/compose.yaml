@@ -1,24 +1,24 @@
 services:
   jellyfin:
     image: jellyfin/jellyfin:latest
+    restart: unless-stopped
     ports:
       - 8096:8096/tcp
       - 7359:7359/udp
-    restart: unless-stopped
     volumes:
-      - /home/misc/jellyfin/config:/config
-      - /home/misc/jellyfin/cache:/cache
-      - /home/misc/jellyfin/media:/media
+      - ./jellyfin/config:/config
+      - ./jellyfin/cache:/cache
+      - ./data/media:/media
     labels:
       com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/jellyfin.svg
 
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
+    restart: unless-stopped
     ports:
       - 9696:9696
-    restart: unless-stopped  
     volumes:
-      - /home/misc/jellyfin/prowlarr/config:/config
+      - ./prowlarr/config:/config
     labels:
       com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/prowlarr.svg
 
@@ -28,8 +28,8 @@ services:
     ports:
       - 7878:7878
     volumes:
-      - /home/misc/jellyfin/radarr/config:/config
-      - /home/misc/jellyfin/radarr/data:/data
+      - ./radarr/config:/config
+      - ./data:/data
     labels:
       com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/radarr.svg
 
@@ -39,8 +39,8 @@ services:
     ports:
       - 8989:8989
     volumes:
-      - /home/misc/jellyfin/sonarr/config:/config
-      - /home/misc/jellyfin/sonarr/data:/data
+      - ./sonarr/config:/config
+      - ./data:/data
     labels:
       com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/sonarr.svg
 
@@ -53,19 +53,19 @@ services:
       - 6881:6881
       - 6881:6881/udp
     volumes:
-      - /home/misc/jellyfin/qbittorrent/config:/config
-      - /home/misc/jellyfin/qbittorrent/data:/data
+      - ./qbittorrent/config:/config
+      - ./data:/data
     labels:
       com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/qbittorrent.svg
 
   seerr:
     image: ghcr.io/seerr-team/seerr:latest
+    restart: unless-stopped
     init: true
     ports:
       - 5055:5055
-    restart: unless-stopped
     volumes:
-      - /home/misc/jellyfin/seerr/config:/app/config
+      - ./seerr/config:/app/config
     healthcheck:
       test:
         - CMD-SHELL
