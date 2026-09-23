@@ -49,7 +49,7 @@ services:
     container_name: qbittorrent
     restart: unless-stopped
     ports:
-      - 8080:8080
+      - 8087:8087
       - 6881:6881
       - 6881:6881/udp
     volumes:
