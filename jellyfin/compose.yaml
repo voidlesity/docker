@@ -65,7 +65,7 @@ services:
       - 5055:5055
     restart: unless-stopped
     volumes:
-      - ./seerr/config:/app/config
+      - /home/misc/jellyfin/seerr/config:/app/config
     healthcheck:
       test:
         - CMD-SHELL
