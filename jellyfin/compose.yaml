@@ -1,6 +1,6 @@
 services:
   jellyfin:
-    image: jellyfin/jellyfin:latest
+    image: lscr.io/linuxserver/jellyfin:latest
     restart: unless-stopped
     ports:
       - 8096:8096/tcp
@@ -9,6 +9,7 @@ services:
       - ./jellyfin/config:/config
       - ./jellyfin/cache:/cache
       - ./data/media:/media
+      - ./jellyfin/config/custom-cont-init.d:/custom-cont-init.d
     labels:
       com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/jellyfin.svg
 
