@@ -46,14 +46,16 @@ services:
       com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/sonarr.svg
 
   aria2:
-    image: snowdreamtech/aria2
+    image: p3terx/aria2-pro
     volumes:
+      - ./aria2:/config
       - ./data/downloads:/downloads
     env_file:
       .env
     ports:
       - 6800:6800
-      - 6881-6999:6881-6999
+      - 6888:6888
+      - 6888:6888/udp
     restart: unless-stopped
     labels:
       com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/aria2.svg
