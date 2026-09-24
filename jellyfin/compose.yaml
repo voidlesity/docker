@@ -47,19 +47,9 @@ services:
 
   aria2:
     image: p3terx/aria2-pro
-    environment:
-      - UMASK_SET=022
-      - RPC_SECRET=P3TERX
-      - RPC_PORT=6800
-      - LISTEN_PORT=6888
-      - DISK_CACHE=64M
-      - IPV6_MODE=false
-      - UPDATE_TRACKERS=true
-      - CUSTOM_TRACKER_URL=
     volumes:
       - ./aria2:/config
       - ./data/downloads:/downloads
-    network_mode: bridge
     ports:
       - 6800:6800
       - 6888:6888
@@ -75,7 +65,6 @@ services:
   ariang:
     image: p3terx/ariang
     command: --port 6880 --ipv6
-    network_mode: bridge
     ports:
       - 8097:6880
     restart: unless-stopped
