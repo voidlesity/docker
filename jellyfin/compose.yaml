@@ -58,7 +58,7 @@ services:
       - CUSTOM_TRACKER_URL=
     volumes:
       - ./aria2:/config
-      - ./data.downloads:/downloads
+      - ./data/downloads:/downloads
     network_mode: bridge
     ports:
       - 6800:6800
