@@ -69,6 +69,8 @@ services:
       driver: json-file
       options:
         max-size: 1m
+    labels:
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/aria2.svg
 
   ariang:
     image: p3terx/ariang
