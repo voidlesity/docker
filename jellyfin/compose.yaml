@@ -46,11 +46,12 @@ services:
       com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/sonarr.svg
 
   aria2:
-    image: snowdreamtech/aria2:ariang
+    image: snowdreamtech/aria2
     volumes:
       - ./data/downloads:/var/lib/aria2/downloads
+    env_file:
+      .env
     ports:
-      - 8097:80
       - 6800:6800
       - 6881-6999:6881-6999
     restart: unless-stopped
