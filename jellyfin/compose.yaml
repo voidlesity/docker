@@ -48,7 +48,7 @@ services:
   aria2:
     image: snowdreamtech/aria2
     volumes:
-      - ./data/downloads:/var/lib/aria2/downloads
+      - ./data/downloads:/downloads
     env_file:
       .env
     ports:
