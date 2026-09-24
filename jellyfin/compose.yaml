@@ -46,32 +46,16 @@ services:
       com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/sonarr.svg
 
   aria2:
-    image: p3terx/aria2-pro
+    image: snowdreamtech/aria2:ariang
     volumes:
-      - ./aria2:/config
-      - ./data/downloads:/downloads
+      - ./data/downloads:/var/lib/aria2/downloads
     ports:
+      - 8097:80
       - 6800:6800
-      - 6888:6888
-      - 6888:6888/udp
+      - 6881-6999:6881-6999
     restart: unless-stopped
-    logging:
-      driver: json-file
-      options:
-        max-size: 1m
     labels:
       com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/aria2.svg
-
-  ariang:
-    image: p3terx/ariang
-    command: --port 6880 --ipv6
-    ports:
-      - 8097:6880
-    restart: unless-stopped
-    logging:
-      driver: json-file
-      options:
-        max-size: 1m
 
   seerr:
     image: ghcr.io/seerr-team/seerr:latest
