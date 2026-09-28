@@ -43,7 +43,7 @@ services:
     volumes:
       - ./postgres:/data
     labels:
-      arcane.icon: calagopus
+      arcane.icon: postgresql
 
   cache:
     image: ghcr.io/calagopus/valkey:latest
@@ -54,4 +54,4 @@ services:
     volumes:
       - ./cache:/data
     labels:
-      arcane.icon: calagopus
+      arcane.icon: valkey
