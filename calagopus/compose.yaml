@@ -29,7 +29,7 @@ services:
       - db
       - cache
     labels:
-      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/calagopus.svg
+      arcane.icon: calagopus
 
   db:
     image: ghcr.io/calagopus/pgautoupgrade:18-alpine
@@ -43,7 +43,7 @@ services:
     volumes:
       - ./postgres:/data
     labels:
-      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/calagopus.svg
+      arcane.icon: calagopus
 
   cache:
     image: ghcr.io/calagopus/valkey:latest
@@ -54,4 +54,4 @@ services:
     volumes:
       - ./cache:/data
     labels:
-      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/calagopus.svg
+      arcane.icon: calagopus
