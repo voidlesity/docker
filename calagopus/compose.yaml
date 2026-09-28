@@ -54,4 +54,4 @@ services:
     volumes:
       - ./cache:/data
     labels:
-      arcane.icon: valkey
+      arcane.icon: valkey-light
