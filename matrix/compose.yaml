@@ -15,7 +15,7 @@ services:
     env_file: "jwt.env"
     network_mode: "host"
     labels:
-      arcane.icon: jwt.io
+      arcane.icon: jwt-io
   rtc-livekit:
     image: livekit/livekit-server:latest
     command: --config /etc/livekit.yaml
@@ -31,7 +31,7 @@ services:
     ports:
       - "8094:8080"
     labels:
-      arcane.icon: element
+      arcane.icon: element-light
   bridge-discord:
     image: dock.mau.dev/mautrix/discord:latest
     restart: unless-stopped
