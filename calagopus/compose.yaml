@@ -28,6 +28,8 @@ services:
     depends_on:
       - db
       - cache
+    labels:
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/calagopus.svg
 
   db:
     image: ghcr.io/calagopus/pgautoupgrade:18-alpine
@@ -40,6 +42,8 @@ services:
       - PGDATA=/data
     volumes:
       - ./postgres:/data
+    labels:
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/calagopus.svg
 
   cache:
     image: ghcr.io/calagopus/valkey:latest
@@ -49,3 +53,5 @@ services:
       TZ: Europe/Berlin
     volumes:
       - ./cache:/data
+    labels:
+      com.getarcaneapp.arcane.icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/calagopus.svg
