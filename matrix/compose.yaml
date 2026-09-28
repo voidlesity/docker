@@ -27,7 +27,7 @@ services:
     ports:
       - "8094:8080"
     labels:
-      arcane.icon: matrix
+      arcane.icon: element
   bridge-discord:
     image: dock.mau.dev/mautrix/discord:latest
     restart: unless-stopped
