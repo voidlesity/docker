@@ -1,6 +1,6 @@
 services:
   web:
-    image: ghcr.io/calagopus/panel:latest
+    image: ghcr.io/calagopus/panel:aio
     restart: unless-stopped
     env_file: ".env"
     volumes:
