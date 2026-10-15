@@ -1,18 +1,12 @@
 services:
   web:
-    image: ghcr.io/calagopus/panel:heavy-aio
+    image: ghcr.io/calagopus/panel:latest
     restart: unless-stopped
     env_file: ".env"
     volumes:
       # --- panel
       - /home/misc/calagopus/data:/var/lib/calagopus
       - /home/misc/calagopus/logs:/var/log/calagopus
-      
-      # --- heavy
-      - /home/misc/calagopus/build/binaries:/app/binaries
-      - /home/misc/calagopus/build/translations:/app/translations
-      - /home/misc/calagopus/build/extensions:/app/extensions
-      - /home/misc/calagopus/build/extension-migrations:/app/repo/database/extension-migrations
 
       # --- wings
       - /home/misc/calagopus/wings-config.yml:/wings-config.yml
