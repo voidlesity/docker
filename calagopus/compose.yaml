@@ -9,7 +9,7 @@ services:
       - /home/misc/gems/logs:/var/log/calagopus
 
       # --- wings
-      - /home/misc/calagopus/wings-config.yml:/wings-config.yml
+      - /home/misc/gems/wings-config.yml:/wings-config.yml
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/docker/containers/:/var/lib/docker/containers/
       - /etc/calagopus-wings/:/etc/calagopus-wings/
