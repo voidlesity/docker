@@ -5,8 +5,8 @@ services:
     env_file: ".env"
     volumes:
       # --- panel
-      - /home/misc/calagopus/data:/var/lib/calagopus
-      - /home/misc/calagopus/logs:/var/log/calagopus
+      - /home/misc/gems/data:/var/lib/calagopus
+      - /home/misc/gems/logs:/var/log/calagopus
 
       # --- wings
       - /home/misc/calagopus/wings-config.yml:/wings-config.yml
